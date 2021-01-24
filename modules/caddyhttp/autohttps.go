@@ -255,7 +255,7 @@ uniqueDomainsLoop:
 		if app.tlsApp.Automation != nil {
 			for _, ap := range app.tlsApp.Automation.Policies {
 				for _, apHost := range ap.Subjects {
-					if apHost == d {
+					if certmagic.MatchWildcard(d, apHost) {
 						continue uniqueDomainsLoop
 					}
 				}
